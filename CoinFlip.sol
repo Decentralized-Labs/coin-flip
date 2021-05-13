@@ -81,7 +81,9 @@ contract DEX {
         token.transfer(msg.sender, amountToBuy);
         emit Bought(amountToBuy);
     }
-    
+    function getDexBalance() public view returns(uint256){
+        return token.balanceOf(address(this));
+    }
     function sell(uint256 amount) public {
         require(amount > 0, "You need to sell tokens");
         uint256 allowance = token.allowance(msg.sender, address(this));
